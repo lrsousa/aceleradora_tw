@@ -1,4 +1,6 @@
 require_relative 'conta'
+require_relative 'pessoa_fisica'
+require_relative 'pessoa_juridica'
 
 class Banco
 
@@ -8,8 +10,12 @@ class Banco
     self.contas = []
   end
 
-  def criar_conta(nome, saldo, pin)
-    self.contas << Conta.new(nome, saldo, pin)
+  def criar_conta(nome, saldo, pin, senha, tipoConta)
+    if tipoConta.eql? "fisica"
+      self.contas << PessoaFisica.new(nome, saldo, pin, senha)
+    elsif tipoConta.eql? "juridica"
+      self.contas << PessoaJuridica.new(nome, saldo, pin, senha)
+    end
   end
 
   def imprimir_saldos
@@ -23,26 +29,38 @@ class Banco
   end
 
   def deposito(destino, valor)
-    conta_destino = buscar_conta(destino)
+    contaDestino = buscar_conta(destino)
     if valor > 0
-      conta_destino.saldo += valor
+      contaDestino.saldo += valor
     else
       puts "Valor invalido"
     end
   end
 
-  def saque(origem, valor)
-    conta_origem = buscar_conta(origem)
+  def saque(origem, valor, senha)
+    contaOrigem = buscar_conta(origem)
 
-    if valor > 0 and conta_origem.saldo >= valor
-      conta_origem.saldo -= valor
+    unless senha_valida?(contaOrigem, senha)
+      p "Senha invalida"
+      return false
+    end
+
+    valor += valor * contaOrigem.taxa
+    if valor > 0 and contaOrigem.saldo >= valor
+      contaOrigem.saldo -= valor
     else
       puts "Valor invalido"
     end
   end
 
-  def transferencia(origem, destino, valor)
-    saque(origem, valor)
+  def transferencia(origem, destino, valor, senha)
+    saque(origem, valor, senha)
     deposito(destino, valor)
   end
+
+  private
+  def senha_valida?(conta, senha)
+    conta.senha.eql? senha
+  end
 end
+
