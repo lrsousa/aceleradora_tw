@@ -5,11 +5,11 @@ class Banco
   attr_accessor :contas
 
   def initialize
-        self.contas = []
+    self.contas = []
   end
 
   def criar_conta(nome, saldo, pin)
-      self.contas << Conta.new(nome, saldo, pin)
+    self.contas << Conta.new(nome, saldo, pin)
   end
 
   def imprimir_saldos
