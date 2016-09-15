@@ -12,3 +12,9 @@
     <li><%= skill.name %> | <%= skill.year %></li>
   <% end %>
 </ul>
+
+<ul>
+  <% @profile.jobs.each do |job|  %>
+    <li><%= job.name %> | <%= job.description %></li>
+  <% end %>
+</ul>

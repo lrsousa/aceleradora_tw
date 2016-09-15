@@ -3817,3 +3817,273 @@ Processing by ProfilesController#index as HTML
 Completed 200 OK in 36ms (Views: 34.2ms | ActiveRecord: 0.3ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateJobs (20160915184528)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "jobs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "date_start" date, "date_end" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160915184528"]]
+  [1m[35m (146.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (7.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2016-09-15 15:46:37 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProfilesController#index as HTML
+  [1m[36mProfile Load (0.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" ORDER BY "profiles"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering profiles/index.html.erb within layouts/application
+  [1m[36mSkill Load (0.2ms)[0m  [1m[34mSELECT "skills".* FROM "skills" WHERE "skills"."profile_id" = ?[0m  [["profile_id", 1]]
+  Rendered profiles/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 329ms (Views: 311.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 15:46:40 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 51ms (Views: 48.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2016-09-15 15:46:42 -0300
+Processing by JobsController#new as HTML
+  Rendering jobs/new.html.erb within layouts/application
+  Rendered jobs/_form.html.erb (48.3ms)
+  Rendered jobs/new.html.erb within layouts/application (50.8ms)
+Completed 200 OK in 101ms (Views: 84.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/jobs" for 127.0.0.1 at 2016-09-15 15:47:17 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WPL64c/V73auU/GfQMzHJ9tKzCON1LiwAEoxbesktzzG3JxNCO01/GspQ3ImvL7WplhrQO453ry+cI1Jas/WXw==", "job"=>{"name"=>"Fazer Café", "description"=>"faznendo café bem forte", "date_start(1i)"=>"2016", "date_start(2i)"=>"9", "date_start(3i)"=>"12", "date_end(1i)"=>"2016", "date_end(2i)"=>"12", "date_end(3i)"=>"21"}, "commit"=>"Create Job"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "jobs" ("name", "description", "date_start", "date_end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Fazer Café"], ["description", "faznendo café bem forte"], ["date_start", Mon, 12 Sep 2016], ["date_end", Wed, 21 Dec 2016], ["created_at", 2016-09-15 18:47:17 UTC], ["updated_at", 2016-09-15 18:47:17 UTC]]
+  [1m[35m (265.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/1
+Completed 302 Found in 274ms (ActiveRecord: 266.2ms)
+
+
+Started GET "/jobs/1" for 127.0.0.1 at 2016-09-15 15:47:17 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering jobs/show.html.erb within layouts/application
+  Rendered jobs/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 42ms (Views: 39.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 15:47:20 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 32ms (Views: 30.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2016-09-15 15:47:21 -0300
+Processing by JobsController#new as HTML
+  Rendering jobs/new.html.erb within layouts/application
+  Rendered jobs/_form.html.erb (8.2ms)
+  Rendered jobs/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 35ms (Views: 33.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/jobs" for 127.0.0.1 at 2016-09-15 15:48:02 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ht5/gAh5Jo+M/RbUFCNIloFijUZHe4X68NrxV//eAtAY8Bksz0H8BUmHpDlyUzFn/HAqJSSW4/ZO4E1zfjVjsw==", "job"=>{"name"=>"Faze Café Estilo Petróleo", "description"=>"Fazer um café bem forte, muito forte mesmo!", "date_start(1i)"=>"2016", "date_start(2i)"=>"9", "date_start(3i)"=>"12", "date_end(1i)"=>"2016", "date_end(2i)"=>"12", "date_end(3i)"=>"21"}, "commit"=>"Create Job"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "jobs" ("name", "description", "date_start", "date_end", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Faze Café Estilo Petróleo"], ["description", "Fazer um café bem forte, muito forte mesmo!"], ["date_start", Mon, 12 Sep 2016], ["date_end", Wed, 21 Dec 2016], ["created_at", 2016-09-15 18:48:02 UTC], ["updated_at", 2016-09-15 18:48:02 UTC]]
+  [1m[35m (239.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/2
+Completed 302 Found in 245ms (ActiveRecord: 240.3ms)
+
+
+Started GET "/jobs/2" for 127.0.0.1 at 2016-09-15 15:48:03 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering jobs/show.html.erb within layouts/application
+  Rendered jobs/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 15:48:04 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 31ms (Views: 29.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-15 15:54:52 -0300
+Processing by ProfilesController#index as HTML
+  [1m[36mProfile Load (0.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" ORDER BY "profiles"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering profiles/index.html.erb within layouts/application
+  [1m[36mSkill Load (0.1ms)[0m  [1m[34mSELECT "skills".* FROM "skills" WHERE "skills"."profile_id" = ?[0m  [["profile_id", 1]]
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."profile_id" = ?[0m  [["profile_id", 1]]
+  Rendered profiles/index.html.erb within layouts/application (14.8ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: jobs.profile_id: SELECT "jobs".* FROM "jobs" WHERE "jobs"."profile_id" = ?):
+    14: </ul>
+    15: 
+    16: <ul>
+    17:   <% @profile.jobs.each do |job|  %>
+    18:     <li><%= job.name %> | <%= job.description %></li>
+    19:   <% end %>
+    20: </ul>
+  
+app/views/profiles/index.html.erb:17:in `_app_views_profiles_index_html_erb___2638692886941822838_69823117365800'
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.2ms)
+Started GET "/" for 127.0.0.1 at 2016-09-15 15:55:06 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProfilesController#index as HTML
+  [1m[36mProfile Load (0.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" ORDER BY "profiles"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering profiles/index.html.erb within layouts/application
+  [1m[36mSkill Load (0.1ms)[0m  [1m[34mSELECT "skills".* FROM "skills" WHERE "skills"."profile_id" = ?[0m  [["profile_id", 1]]
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."profile_id" = ?[0m  [["profile_id", 1]]
+  Rendered profiles/index.html.erb within layouts/application (20.8ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: jobs.profile_id: SELECT "jobs".* FROM "jobs" WHERE "jobs"."profile_id" = ?):
+    14: </ul>
+    15: 
+    16: <ul>
+    17:   <% @profile.jobs.each do |job|  %>
+    18:     <li><%= job.name %> | <%= job.description %></li>
+    19:   <% end %>
+    20: </ul>
+  
+app/views/profiles/index.html.erb:17:in `_app_views_profiles_index_html_erb__2731976305675181282_70001554520740'
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.6ms)
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/aluno4/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddProfileIdToJobs (20160915185750)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "jobs" ADD "profile_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160915185750"]]
+  [1m[35m (126.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2016-09-15 15:58:12 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProfilesController#index as HTML
+  [1m[36mProfile Load (0.1ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" ORDER BY "profiles"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering profiles/index.html.erb within layouts/application
+  [1m[36mSkill Load (0.2ms)[0m  [1m[34mSELECT "skills".* FROM "skills" WHERE "skills"."profile_id" = ?[0m  [["profile_id", 1]]
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."profile_id" = ?[0m  [["profile_id", 1]]
+  Rendered profiles/index.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 239ms (Views: 220.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 15:59:24 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 41ms (Views: 39.3ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mJob Load (1.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 16:00:44 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 211ms (Views: 199.9ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/jobs/1" for 127.0.0.1 at 2016-09-15 16:00:47 -0300
+Processing by JobsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1+iWlytALjCDsSKF/nWYbwB30hkOQKw7bmeGiU1w5i4VeppHHcHZvyZIlAoJj65f6mb9vHvirc5UcNmJpcB5iQ==", "id"=>"1"}
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "jobs" WHERE "jobs"."id" = ?[0m  [["id", 1]]
+  [1m[35m (128.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs
+Completed 302 Found in 140ms (ActiveRecord: 128.9ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 16:00:47 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 44ms (Views: 43.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/jobs/2" for 127.0.0.1 at 2016-09-15 16:00:48 -0300
+Processing by JobsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8Eav0Sc4AhRhRnPeHSl7yorsM2UwL+lLojq2Kqxwemky1KMBEbn1m8S/xVHq0036YP0cwEWN6L6YLekqRMDlzg==", "id"=>"2"}
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "jobs" WHERE "jobs"."id" = ?[0m  [["id", 2]]
+  [1m[35m (158.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs
+Completed 302 Found in 162ms (ActiveRecord: 158.9ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 16:00:49 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2016-09-15 16:00:50 -0300
+Processing by JobsController#new as HTML
+  Rendering jobs/new.html.erb within layouts/application
+  Rendered jobs/_form.html.erb (41.3ms)
+  Rendered jobs/new.html.erb within layouts/application (42.8ms)
+Completed 200 OK in 89ms (Views: 87.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/jobs" for 127.0.0.1 at 2016-09-15 16:01:07 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aHyj1Vrj9G5P41wFuC4HLzyeRFzQMDSKP9q94DQlBG/2UsV5ndsu5IqZ7ujeXn7eQYzjP7PdUoaB4AHEtc5lDA==", "job"=>{"name"=>"Fazer Café", "description"=>"faznendo café bem forte", "date_start(1i)"=>"2016", "date_start(2i)"=>"12", "date_start(3i)"=>"2", "date_end(1i)"=>"2016", "date_end(2i)"=>"12", "date_end(3i)"=>"21"}, "commit"=>"Create Job"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "jobs" ("name", "description", "date_start", "date_end", "created_at", "updated_at", "profile_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Fazer Café"], ["description", "faznendo café bem forte"], ["date_start", Fri, 02 Dec 2016], ["date_end", Wed, 21 Dec 2016], ["created_at", 2016-09-15 19:01:07 UTC], ["updated_at", 2016-09-15 19:01:07 UTC], ["profile_id", 1]]
+  [1m[35m (235.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/3
+Completed 302 Found in 245ms (ActiveRecord: 236.3ms)
+
+
+Started GET "/jobs/3" for 127.0.0.1 at 2016-09-15 16:01:07 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering jobs/show.html.erb within layouts/application
+  Rendered jobs/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 36ms (Views: 33.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2016-09-15 16:01:09 -0300
+Processing by JobsController#index as HTML
+  Rendering jobs/index.html.erb within layouts/application
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  Rendered jobs/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 35ms (Views: 33.1ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT  "jobs".* FROM "jobs" ORDER BY "jobs"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
