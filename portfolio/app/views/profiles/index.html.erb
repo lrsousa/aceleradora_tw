@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1 id="title-profile"><%= @profile.name %></h1>
+
+
+      <td><%= @profile.email %></td>
+      <td><%= @profile.github %></td>
+      <td><%= @profile.bio %></td>
+
+<ul>
+  <% @profile.skills.each do |skill|  %>
+    <li><%= skill.name %> | <%= skill.year %></li>
+  <% end %>
+</ul>

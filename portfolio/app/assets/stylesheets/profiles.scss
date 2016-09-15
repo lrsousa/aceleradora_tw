@@ -1,0 +1,20 @@
+// Place all the styles related to the Profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul {
+  list-style-type: none;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+#title-profile {
+  text-align: center;
+  font-size: 5em;
+  font-family: 'Indie Flower', cursive;
+}
