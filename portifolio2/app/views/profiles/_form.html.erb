@@ -1,0 +1,71 @@
+<%= form_for @profile, url: profile_path, html: { multipart: true } do |f| %>
+<% if profile.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+  <ul>
+    <% profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<h3>Avatar</h3>
+<%= f.file_field :avatar %>
+
+<h3>Profile</h3>
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>
+
+<div class="field">
+  <%= f.label :github %>
+  <%= f.text_field :github %>
+</div>
+
+<div class="field">
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+</div>
+
+<h3>Skills</h3>
+
+<%= f.fields_for :skills do |skills_form| %>
+  <div class="field">
+    <%= skills_form.label :name %>
+    <%= skills_form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= skills_form.label :years %>
+    <%= skills_form.text_field :years %>
+  </div>
+<% end %>
+
+<h3>Jobs</h3>
+
+<%= f.fields_for :jobs do |jobs_form| %>
+  <div class="field">
+    <%= jobs_form.label :title %>
+    <%= jobs_form.text_area :title %>
+  </div>
+
+  <div class="field">
+    <%= jobs_form.label :description %>
+    <%= jobs_form.text_field :description %>
+  </div>
+<% end %>
+
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>

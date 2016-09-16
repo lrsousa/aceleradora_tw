@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="avatar">
+  <%= image_tag @profile.avatar.url(:medium) %>
+</div>
+
+<h1 class="fonte-bacana"><%= @profile.name %></h1>
+
+<p>
+  Olá, meu nome é <b><%= @profile.name %></b>
+</p>
+
+<h3 class="fonte-bacana">Biografia</h3>
+<div class="div-bio">
+  <span>
+    <%= @profile.bio %>
+  </span>
+</div>
+
+<p>
+  <h3 class="fonte-bacana">Minhas habilidades são:</h3>
+  <p>
+    <ul>
+      <% @profile.skills.each do |skill| %>
+      <li class="atributos"><%= skill.name%></li>
+      <% end %>
+    </ul>
+  </p>
+</p>
+
+
+<h3 class="fonte-bacana">Jobs:</h3>
+
+<% @profile.jobs.each do |job| %>
+<div class="div-job">
+  <div class="avatar img-job">
+    <%= image_tag job.image.url(:medium) %>
+  </div>
+  <div ><%= job.title %> <br/> <%= job.description %></div>
+</div>
+<% end %>
