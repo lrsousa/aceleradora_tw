@@ -1,0 +1,14 @@
+ .fundo-cabecalho {
+     background-color: #c9daf8ff;
+     padding: 26px 10px;
+     font-size: 1.5em;
+     text-align: left;
+ }
+
+ .painel-um {
+     right: 25px;
+ }
+
+.container {
+    width: 1350px;
+}
