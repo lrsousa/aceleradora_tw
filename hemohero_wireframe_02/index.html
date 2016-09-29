@@ -82,18 +82,18 @@
                         </div>
                     </div>
 
-                    <form class="form-horizontal recubo-form-esquerda fundo-recubo alinhamento">
+                    <form id="formulario-doadores" class="form-horizontal recubo-form-esquerda fundo-recubo alinhamento">
                         <div class="">
                             <div class="form-group row">
                                 <label for="a-positivo" class="col-md-1 col-form-label">A+</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="a-positivo">
+                                    <input data-value="A+" class="form-control input-lg" type="number" value="" id="a-positivo">
                                 </div>
                                 <label for="a-positivo" class="col-md-1 col-form-label">bolsas</label>
 
                                 <label for="a-negativo" class="col-md-1 col-md-offset-2 col-form-label">A-</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="a-negativo">
+                                    <input data-value="A-" class="form-control input-lg" type="number" value="" id="a-negativo">
                                 </div>
                                 <label for="a-negativo" class="col-md-1 col-form-label">bolsas</label>
                             </div>
@@ -101,13 +101,13 @@
                             <div class="form-group row recubo">
                                 <label for="b-positivo" class="col-md-1 col-form-label">B+</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="b-positivo">
+                                    <input data-value="B+" class="form-control input-lg" type="number" value="" id="b-positivo">
                                 </div>
                                 <label for="b-positivo" class="col-md-1 col-form-label">bolsas</label>
 
                                 <label for="b-negativo" class="col-md-1 col-md-offset-2 col-form-label">B-</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="b-negativo">
+                                    <input data-value="B-" class="form-control input-lg" type="number" value="" id="b-negativo">
                                 </div>
                                 <label for="b-negativo" class="col-md-1 col-form-label">bolsas</label>
                             </div>
@@ -115,13 +115,13 @@
                             <div class="form-group row recubo">
                                 <label for="ab-positivo" class="col-md-1 col-form-label">AB+</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="ab-positivo">
+                                    <input data-value="AB+" class="form-control input-lg" type="number" value="" id="ab-positivo">
                                 </div>
                                 <label for="ab-positivo" class="col-md-1 col-form-label">bolsas</label>
 
                                 <label for="ab-negativo" class="col-md-1 col-md-offset-2 col-form-label">AB-</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="ab-negativo">
+                                    <input data-value="AB-" class="form-control input-lg" type="number" value="" id="ab-negativo">
                                 </div>
                                 <label for="ab-negativo" class="col-md-1 col-form-label">bolsas</label>
                             </div>
@@ -129,13 +129,13 @@
                             <div class="form-group row recubo">
                                 <label for="o-positivo" class="col-md-1 col-form-label">O+</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="o-positivo">
+                                    <input data-value="O+" class="form-control input-lg" type="number" value="" id="o-positivo">
                                 </div>
                                 <label for="o-positivo" class="col-md-1 col-form-label">bolsas</label>
 
                                 <label for="o-negativo" class="col-md-1 col-md-offset-2 col-form-label">O-</label>
                                 <div class="col-md-2">
-                                    <input class="form-control input-lg" type="number" value="" id="o-negativo">
+                                    <input data-value="O-" class="form-control input-lg" type="number" value="" id="o-negativo">
                                 </div>
                                 <label for="o-negativo" class="col-md-1 col-form-label">bolsas</label>
                             </div>
@@ -156,7 +156,7 @@
                         <p>
                             Após informar a quantidade de doadores para cada tipo sanguíneo, clique aqui para continuar o pedido de solicitação.
                         </p>
-                        <button type="submit" class="btn-lg btn-success">Avançar</button>
+                        <button id="btn-solicitar-doadores" type="submit" class="btn-lg btn-success" data-toggle="modal" data-target="#myModal">Avançar</button>
                     </div>
                     <div class="col-md-10">
                         <p id="data-atualizacao">
@@ -169,6 +169,27 @@
 
         </div>
     </section>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Confirmar Solicitação</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Doadores Solicitados</h3>
+                    <ul id="lista-doadores-solicitados">
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-lg btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-lg btn-success">Confirmar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -186,6 +207,16 @@
             d.setDate(d.getDate() - 2);
             $("#data-atualizacao").html("Ultima atualização: " + d.toLocaleString());
         };
+
+        $("#btn-solicitar-doadores").on('click', function() {
+            var lista = [];
+            $("#formulario-doadores input").each(function() {
+                if($(this).val() && $(this).val() > 0) {
+                    lista.push("<li>" + $(this).val() + " do tipo " + $(this).attr('data-value') + "</li>");
+                }
+            });
+            $("#lista-doadores-solicitados").html(lista);
+        })
     </script>
 
 </body>
