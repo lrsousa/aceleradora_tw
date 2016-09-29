@@ -156,7 +156,7 @@
                         <p>
                             Após informar a quantidade de doadores para cada tipo sanguíneo, clique aqui para continuar o pedido de solicitação.
                         </p>
-                        <button id="btn-solicitar-doadores" type="submit" class="btn-lg btn-success" data-toggle="modal" data-target="#myModal">Avançar</button>
+                        <button id="btn-solicitar-doadores" type="submit" class="btn-lg btn-success">Avançar</button>
                     </div>
                     <div class="col-md-10">
                         <p id="data-atualizacao">
@@ -174,18 +174,36 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Confirmar Solicitação</h4>
+                    <div class="col-md-2">
+                            <img src="img/003.png"/>
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="modal-title">Confirmar Solicitação</h3>
+                        </div>
                 </div>
                 <div class="modal-body">
                     <h3>Doadores Solicitados</h3>
-                    <ul id="lista-doadores-solicitados">
+                    <div class="col-md-5">
+                        <ul id="lista-doadores-solicitados">
 
-                    </ul>
+                        </ul>
+                    </div>
+                    <div class="col-md-7">
+                        <p>
+                            Enviar solicitação para os doadores dos tipos sanguíneos necessários?
+                        </p>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-lg btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn-lg btn-success">Confirmar</button>
+                    <div id="botoes-confirmar">
+                        <button type="button" class="btn-lg btn-default" data-dismiss="modal">Cancelar</button>
+                        <button id="confirmar-requisicao-doadores" type="button" class="btn-lg btn-success">Confirmar</button>
+                    </div>
+
+                    <div id="botoes-fechar" style="display: none;">
+                        <button type="button" class="btn-lg btn-default" data-dismiss="modal">Cancelar</button>
+                        <button id="btn-fechar-confirmacao-doacao" type="button" class="btn-lg btn-success" data-dismiss="modal">Confirmar</button>
+                    </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -215,8 +233,32 @@
                     lista.push("<li>" + $(this).val() + " do tipo " + $(this).attr('data-value') + "</li>");
                 }
             });
-            $("#lista-doadores-solicitados").html(lista);
-        })
+            if(lista.length > 0) {
+                $("#lista-doadores-solicitados").html(lista);
+                $("#myModal").modal({ keyboard: false , "backdrop" : "static"});
+            } else {
+                alert("É preciso selecionar ao menos um doador.")
+            }
+        });
+
+        var _backupConteudoModalBody;
+        $("#confirmar-requisicao-doadores").on("click", function() {
+            var conteudoTextoConfirmacao = "<h2>Seu pedido de solicitação foi recebido com sucesso pela equipe do HemoHeroes.</h2>"
+            _backupConteudoModalBody = $("#myModal .modal-body").html();
+            $("#myModal .modal-body").html(conteudoTextoConfirmacao);
+            trocarBotoesModal();
+        });
+
+        $("#botoes-fechar button").on("click", function() {
+            if($(this).attr("id") == "btn-fechar-confirmacao-doacao") $("#data-atualizacao").html("Ultima atualização: " + new Date().toLocaleString());
+            $("#myModal .modal-body").html(_backupConteudoModalBody);
+            trocarBotoesModal();
+        });
+
+        function trocarBotoesModal() {
+            $("#botoes-confirmar").toggle();
+            $("#botoes-fechar").toggle();
+        }
     </script>
 
 </body>

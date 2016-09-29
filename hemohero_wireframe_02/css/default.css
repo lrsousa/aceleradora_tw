@@ -57,3 +57,33 @@
     margin-top: 125px;
     padding-left: 35px;
 }
+
+#lista-doadores-solicitados {
+    border-right: 2px solid black;
+    margin-right: -34px;
+}
+
+#lista-doadores-solicitados > li {
+    font-size: 1.4em;
+    list-style: none;
+}
+
+
+.modal-body {
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 15px;
+}
+
+.modal-body p {
+    font-size: 1.4em;
+    text-align: center;
+}
+.modal-header {
+    background-color: #c9daf8;
+}
+
+.modal-header h3 {
+    margin-top: 24px;
+}
