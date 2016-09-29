@@ -12,7 +12,7 @@
     <title>Hemo Heroes</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/scrolling-nav.css" rel="stylesheet">
@@ -72,26 +72,101 @@
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 fundo-cabecalho painel-um">
-                    <div class="col-md-2">
-                        <img src="img/001.png"/>
+                <div class="col-md-7 painel-um">
+                    <div class="col-md-12 fundo-cabecalho">
+                        <div class="col-md-2">
+                            <img src="img/001.png"/>
+                        </div>
+                        <div class="col-md-10">
+                            <h3>Insira a quantidade necessária de bolsas de sangue para cada tipo sanguíneo:</h3>
+                        </div>
+                    </div>
+
+                    <form class="form-horizontal recubo-form-esquerda fundo-recubo alinhamento">
+                        <div class="">
+                            <div class="form-group row">
+                                <label for="a-positivo" class="col-md-1 col-form-label">A+</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="a-positivo">
+                                </div>
+                                <label for="a-positivo" class="col-md-1 col-form-label">bolsas</label>
+
+                                <label for="a-negativo" class="col-md-1 col-md-offset-2 col-form-label">A-</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="a-negativo">
+                                </div>
+                                <label for="a-negativo" class="col-md-1 col-form-label">bolsas</label>
+                            </div>
+
+                            <div class="form-group row recubo">
+                                <label for="b-positivo" class="col-md-1 col-form-label">B+</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="b-positivo">
+                                </div>
+                                <label for="b-positivo" class="col-md-1 col-form-label">bolsas</label>
+
+                                <label for="b-negativo" class="col-md-1 col-md-offset-2 col-form-label">B-</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="b-negativo">
+                                </div>
+                                <label for="b-negativo" class="col-md-1 col-form-label">bolsas</label>
+                            </div>
+
+                            <div class="form-group row recubo">
+                                <label for="ab-positivo" class="col-md-1 col-form-label">AB+</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="ab-positivo">
+                                </div>
+                                <label for="ab-positivo" class="col-md-1 col-form-label">bolsas</label>
+
+                                <label for="ab-negativo" class="col-md-1 col-md-offset-2 col-form-label">AB-</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="ab-negativo">
+                                </div>
+                                <label for="ab-negativo" class="col-md-1 col-form-label">bolsas</label>
+                            </div>
+
+                            <div class="form-group row recubo">
+                                <label for="o-positivo" class="col-md-1 col-form-label">O+</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="o-positivo">
+                                </div>
+                                <label for="o-positivo" class="col-md-1 col-form-label">bolsas</label>
+
+                                <label for="o-negativo" class="col-md-1 col-md-offset-2 col-form-label">O-</label>
+                                <div class="col-md-2">
+                                    <input class="form-control input-lg" type="number" value="" id="o-negativo">
+                                </div>
+                                <label for="o-negativo" class="col-md-1 col-form-label">bolsas</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="col-md-12 fundo-cabecalho">
+                        <div class="col-md-3">
+                            <img src="img/002.png"/>
+                        </div>
+                        <div class="col-md-9">
+                            <h3 class="">Solicitar Doações</h3>
+                        </div>
+                    </div>
+                    <div class="fundo-recubo-direita col-md-12">
+                        <p>
+                            Após informar a quantidade de doadores para cada tipo sanguíneo, clique aqui para continuar o pedido de solicitação.
+                        </p>
+                        <button type="submit" class="btn-lg btn-success">Avançar</button>
                     </div>
                     <div class="col-md-10">
-                        <h3>Insira a quantidade necessária de bolsas de sangue para cada tipo sanguíneo:</h3>
+                        <p id="data-atualizacao">
+
+                        </p>
                     </div>
                 </div>
-
-                <div class="col-md-5 fundo-cabecalho">
-                    <div class="col-md-3">
-                        <img src="img/002.png"/>
-                    </div>
-                    <div class="col-md-9">
-                        <h3 class="">Solicitar Doações</h3>
-                    </div>
-
-                </div>
-
             </div>
+
+
         </div>
     </section>
 
@@ -104,6 +179,14 @@
     <!-- Scrolling Nav JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/scrolling-nav.js"></script>
+
+    <script>
+        window.onload = function() {
+            var d = new Date();
+            d.setDate(d.getDate() - 2);
+            $("#data-atualizacao").html("Ultima atualização: " + d.toLocaleString());
+        };
+    </script>
 
 </body>
 
