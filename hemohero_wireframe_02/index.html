@@ -201,7 +201,6 @@
                     </div>
 
                     <div id="botoes-fechar" style="display: none;">
-                        <button type="button" class="btn-lg btn-default" data-dismiss="modal">Cancelar</button>
                         <button id="btn-fechar-confirmacao-doacao" type="button" class="btn-lg btn-success" data-dismiss="modal">Confirmar</button>
                     </div>
                 </div>
@@ -243,7 +242,7 @@
 
         var _backupConteudoModalBody;
         $("#confirmar-requisicao-doadores").on("click", function() {
-            var conteudoTextoConfirmacao = "<h2>Seu pedido de solicitação foi recebido com sucesso pela equipe do HemoHeroes.</h2>"
+            var conteudoTextoConfirmacao = "<p>Seu pedido de solicitação foi recebido com sucesso pela equipe do HemoHeroes.</p>"
             _backupConteudoModalBody = $("#myModal .modal-body").html();
             $("#myModal .modal-body").html(conteudoTextoConfirmacao);
             trocarBotoesModal();
